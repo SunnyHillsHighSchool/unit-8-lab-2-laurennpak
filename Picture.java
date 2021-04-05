@@ -368,6 +368,33 @@ public class Picture
 
    ////////////////////// methods ///////////////////////////////////////
 
+   public void reflectVertical() {
+     //Create a 2D array of Pixel
+     Pixel[][] pixels = this.getPixels2D();
+     //Create new variable topPixel
+     Pixel topPixel = null;
+     //Create new variable bottomPixel
+     Pixel bottomPixel = null;
+     //For loop that loops through the rows
+     for(int row = 0; row < pixels.length/2; row++)
+     {
+       //For loop that loops through the columns
+       for(int col = 0; col < pixels[0].length; col++)
+       {
+         //Get the current top pixels
+         topPixel = pixels[row][col];
+         //Get the current bottom pixel
+         bottomPixel = pixels[pixels.length-1-row][col];
+         //Create a new variable tempColor to store the top pixel's colors in
+         Color tempColor = topPixel.getColor();
+         //Interchange the top pixel’s colors by setting its colors to bottom pixel’s colors
+         topPixel.setColor(bottomPixel.getColor());
+         //Interchange the bottom pixel’s colors by setting its colors to variable tempColor
+         bottomPixel.setColor(tempColor);
+       }
+     }
+   }
+
    
 
 
